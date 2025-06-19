@@ -99,7 +99,7 @@ try {
                 <NavLink to='/products' className="hover:text-primary transition" onClick={()=>setOpen(false)}>All Products</NavLink>
                 
                 {user &&
-                <NavLink to='/products' className="hover:text-primary transition" onClick={()=>setOpen(false)}>My Orders</NavLink>
+                <NavLink to='/my-orders' className="hover:text-primary transition" onClick={()=>setOpen(false)}>My Orders</NavLink>
                 }
                                 <a 
   href="https://jagadeeshrportfolio.vercel.app" 
