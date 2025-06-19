@@ -42,7 +42,12 @@ try {
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/products'>All Products</NavLink>
                 <NavLink to='/'>Contact</NavLink>
-
+                <NavLink 
+        to='/seller' 
+        className="hidden lg:block border border-gray-300 px-4 py-1.5 rounded-full text-sm hover:bg-gray-100 transition"
+    >
+        Seller Dashboard
+    </NavLink>
 
                 <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
                     <input onChange={(e)=>setSearchQuery(e.target.value)} className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
@@ -84,6 +89,7 @@ try {
                 <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md z-50 py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
                 <NavLink to='/' onClick={()=>setOpen(false)}>Home</NavLink>
                 <NavLink to='/products' onClick={()=>setOpen(false)}>All Products</NavLink>
+                <NavLink to='/seller' onClick={()=>setOpen(false)}>Seller Dashboard</NavLink>
                 {user &&
                 <NavLink to='/products' onClick={()=>setOpen(false)}>My Orders</NavLink>
                 }
