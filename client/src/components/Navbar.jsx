@@ -94,14 +94,21 @@ try {
             
             { open && (
                 <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md z-50 py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
-                <NavLink to='/seller' onClick={()=>setOpen(false)}>Seller Dashboard</NavLink>
-                <NavLink to='/' onClick={()=>setOpen(false)}>Home</NavLink>
-                <NavLink to='/products' onClick={()=>setOpen(false)}>All Products</NavLink>
+                <NavLink to='/seller'className="hidden lg:block border border-gray-300 px-4 py-1.5 rounded-full text-sm hover:bg-gray-100 transition" onClick={()=>setOpen(false)}>Seller Dashboard</NavLink>
+                <NavLink to='/'  className="hover:text-primary transition" onClick={()=>setOpen(false)}>Home</NavLink>
+                <NavLink to='/products' className="hover:text-primary transition" onClick={()=>setOpen(false)}>All Products</NavLink>
                 
                 {user &&
-                <NavLink to='/products' onClick={()=>setOpen(false)}>My Orders</NavLink>
+                <NavLink to='/products' className="hover:text-primary transition" onClick={()=>setOpen(false)}>My Orders</NavLink>
                 }
-                <NavLink to='/' onClick={()=>setOpen(false)}>Contact</NavLink>
+                                <a 
+  href="https://jagadeeshrportfolio.vercel.app" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="hover:text-primary transition"
+>
+  Contact Developer
+</a>
                 {!user ? (<button onClick={()=>{setOpen(false); setShowUserLogin(true);}} className="cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary-dull transition text-white rounded-full text-sm">
                     Login
                 </button>): (
