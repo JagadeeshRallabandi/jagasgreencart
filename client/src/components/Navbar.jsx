@@ -41,7 +41,7 @@ try {
             <div className="hidden sm:flex items-center gap-8">
                 <NavLink 
                 to='/seller' 
-                    className="hidden lg:block border border-gray-300 px-4 py-1.5 rounded-full text-sm hover:bg-gray-100 transition">
+                    className="lg:block border border-gray-300 px-4 py-1.5 rounded-full text-sm hover:bg-gray-100 transition">
                     Seller Dashboard
                 </NavLink>
                 <NavLink to='/' className="hover:text-primary transition" >Home</NavLink>
@@ -94,7 +94,7 @@ try {
             
             { open && (
                 <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md z-50 py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
-                <NavLink to='/seller'className="hidden lg:block border border-gray-300 px-4 py-1.5 rounded-full text-sm hover:bg-gray-100 transition" onClick={()=>setOpen(false)}>Seller Dashboard</NavLink>
+                <NavLink to='/seller' className="lg:block border border-gray-300 px-4 py-1.5 rounded-full text-sm hover:bg-gray-100 transition">Seller Dashboard</NavLink>
                 <NavLink to='/'  className="hover:text-primary transition" onClick={()=>setOpen(false)}>Home</NavLink>
                 <NavLink to='/products' className="hover:text-primary transition" onClick={()=>setOpen(false)}>All Products</NavLink>
                 
