@@ -11,19 +11,19 @@ const Loading = () => {
     const nextUrl = query.get('next');
 
     useEffect(()=>{
-        // const clearCart = async()=>{
-        //     if(user){
-        //         setCartItems({})
-        //         await axios.post("/api/cart/update",{cartItems:{}})
-        //     }
-        // }
+        const clearCart = async()=>{
+            if(user){
+                setCartItems({})
+                await axios.post("/api/cart/update",{cartItems:{}})
+            }
+        }
         if(nextUrl){
-            // clearCart();
+            clearCart();
             setTimeout(()=>{
                 navigate(`/${nextUrl}`)
             },5000)
         }
-    },[nextUrl])
+    },[user,nextUrl])
 
   return (
     <div className='flex justify-center items-center h-screen'>

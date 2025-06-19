@@ -158,56 +158,6 @@ export const stripeWebhooks = async (request, response) => {
     response.json({received: true})
 
 }
-// export const stripeWebhooks = async (request, response) => {
-//   const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY);
-//   const sig = request.headers["stripe-signature"];
-//   let event;
-
-//   try {
-//     event = stripeInstance.webhooks.constructEvent(
-//       request.body,
-//       sig,
-//       process.env.STRIPE_WEBHOOK_SECRET
-//     );
-//   } catch (error) {
-//     console.error("Webhook signature error:", error.message);
-//     return response.status(400).send(`Webhook Error: ${error.message}`);
-//   }
-
-//   console.log("Received Stripe event:", event.type);
-
-//   switch (event.type) {
-//     case "checkout.session.completed": {
-//       const session = event.data.object;
-//       console.log("Webhook HIT — Session metadata:", session.metadata);
-
-//       const orderId = session.metadata?.orderId;
-//       const userId = session.metadata?.userId;
-
-//       if (!orderId) {
-//         console.error("No orderId in metadata!");
-//         break;
-//       }
-
-//       await Order.findByIdAndUpdate(orderId, { isPaid: true });
-//       console.log(`Order ${orderId} marked as paid ✅`);
-
-//       if (userId) {
-//         await User.findByIdAndUpdate(userId, { cartItems: {} });
-//         console.log(`User ${userId} cart cleared 🛒`);
-//       }
-
-//       break;
-//     }
-
-//     default:
-//       console.log(`Unhandled event type ${event.type}`);
-//   }
-
-//   response.json({ received: true });
-// };
-
-
 
 
 //Get Orders by User ID: /api/order/user
@@ -218,8 +168,8 @@ export const getUserOrders = async (req,res) => {
         const orders = await Order.find({
             userId,
             $or: [
-  { paymentType: "COD" },
-  { isPaid: true }
+  { paymentType: {$in: ["COD", "Online"]}},
+
 ]
 
         }).populate("items.product address").sort({createdAt:-1});
@@ -235,7 +185,7 @@ export const getAllOrders = async (req,res) => {
 
         const orders = await Order.find({
             $or: [
-  { paymentType: "COD"},
+  { paymentType: {$in: ["COD", "Online"]}},
   { isPaid: true }
 ]
 
