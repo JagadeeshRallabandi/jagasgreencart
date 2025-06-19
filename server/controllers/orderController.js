@@ -169,6 +169,7 @@ export const getUserOrders = async (req,res) => {
             userId,
             $or: [
   { paymentType: {$in: ["COD", "Online"]}},
+  {isPaid:true}
 
 ]
 
