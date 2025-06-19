@@ -6,24 +6,24 @@ import { useEffect } from 'react';
 const Loading = () => {
 
     const {navigate, setCartItems,axios,user} = useAppContext();
-    let {search} = useLocation()
+    let {search} = useLocation();
     const query = new URLSearchParams(search)
     const nextUrl = query.get('next');
 
     useEffect(()=>{
-        const clearCart = async()=>{
-            if(user){
-                setCartItems({})
-                await axios.post("/api/cart/update",{cartItems:{}})
-            }
-        }
+        // const clearCart = async()=>{
+        //     if(user){
+        //         setCartItems({})
+        //         await axios.post("/api/cart/update",{cartItems:{}})
+        //     }
+        // }
         if(nextUrl){
-            clearCart();
+            // clearCart();
             setTimeout(()=>{
                 navigate(`/${nextUrl}`)
             },5000)
         }
-    },[user,nextUrl])
+    },[nextUrl])
 
   return (
     <div className='flex justify-center items-center h-screen'>
